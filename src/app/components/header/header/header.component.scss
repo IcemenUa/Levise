@@ -1,0 +1,50 @@
+.header {
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+
+}
+
+.header__categories {
+  padding-left: 4%;
+  width: 15%;
+  font-family: 'lato';
+  line-height: 8vh;
+  font-size: smaller;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 900;
+}
+
+.header__logo {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__search-basket {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.header__search-basket__basket {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right:30%;
+}
+
+.header__search-basket__search {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right:15%;
+}

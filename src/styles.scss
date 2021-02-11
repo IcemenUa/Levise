@@ -1,7 +1,31 @@
 @font-face{
     font-family: 'lato';
     font-style: normal;
-src: url(./../fonts/lato/Lato-Regular.ttf)
+src: url(assets/fonts/lato/Lato-Black.ttf)
+}
+@font-face{
+  font-family: 'interstate';
+  font-style: normal;
+src: url(assets/fonts/Interstate/InterstateBlackRegular.otf)
+}
+@font-face{
+  font-family: 'Helvetica Now Text';
+  font-style: normal;
+src: url(assets/fonts/helvetica/HelveticaNowText-Regular.ttf)
+}
+@font-face{
+  font-family: 'lato-bold';
+src: url(assets/fonts/lato/Lato-Bold.ttf)
+}
+@font-face{
+  font-family: 'helvetica-bold';
+  font-style:normal;
+src: url(assets/fonts/helvetica/helvetica-bold.ttf)
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
 }
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming

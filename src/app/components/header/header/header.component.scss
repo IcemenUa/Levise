@@ -70,3 +70,43 @@
   align-items: center;
   margin-right: 15%;
 }
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+button:active {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font: normal 16px/1.5 Helvetica, sans-serif;
+}
+
+.left-menu{
+  left: -30vw;
+  width: 30vw;
+  height: 94vh;
+  position: absolute;
+  background:white;
+}

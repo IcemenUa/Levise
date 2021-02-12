@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "levis-20d6b": {
+      "hosting": {
+        "levis": [
+          "levis-20d6b"
+        ]
+      }
+    }
+  }
+}

@@ -1,11 +1,63 @@
 <app-home-special-offer></app-home-special-offer>
+<app-home-offer-cards></app-home-offer-cards>
+<div class="registration">
+  <div class="registration__reg-info">
 
-<div class="offer-cards">
+    <div class="registration__reg-info__logo">
 
-  <div class="offer-cards__offer-card">
-    <div class="offer-cards__offer-card__img"><img src="/src/assets/Images/home-page/offerCard1.jpeg" alt=""></div>
-    <div class="offer-cards__offer-card__name"></div>
-    <div class="offer-cards__offer-card__description"></div>
+    </div>
+    <div class="registration__reg-info__name">
+      <span>JOIN THE RED TAB™ MEMBER PROGRAM FOR EXCLUSIVE PERKS</span>
+    </div>
+    <div class="registration__reg-info__desc">
+      <span>Membership is free and open to all. Get free shipping on every order, exclusive access to product, a
+        birthday gift and much, much more.</span>
+    </div>
+    <div class="registration__reg-info__btns">
+      <div class="registration__reg-info__btns__btn">
+        <span class="registration__reg-info__btns__btn__name">Sign Up</span>
+        <svg class="registration__reg-info__btns__btn__underline" preserveAspectRatio="none" viewBox="0 0 82 4"
+          id="link-underline">
+          <path
+            d="M82 2.568c.036 1.699-3.547.36-4.332.308-1.457-.1-18.759.065-22.197.054-1.466-.005-15.946-.361-16.682-.378-1.378-.03-7.148-.193-8.656-.17-1.2.017-14.44.345-16.02.404-1.2.044-9.782-.2-10.583-.247C2.663 2.487.014 3.376 0 1.501-.017-.67 2.378.23 3.49.203c1.172-.027 8.753.205 9.655.173.635-.022 17.965-.4 19.035-.377 1.623.035 12.802.269 14.052.29C47.495.313 61.47.532 62.776.54 64.51.551 70.418.274 71.64.286c1.591.015 7.335.628 8.6.422.86-.14 1.771.226 1.76 1.86z"
+            fill="currentColor"></path>
+        </svg>
+      </div>
+
+      <div class="registration__reg-info__btns__btn">
+        <span class="registration__reg-info__btns__btn__name">Log In</span>
+        <svg class="registration__reg-info__btns__btn__underline" preserveAspectRatio="none" viewBox="0 0 82 4"
+          id="link-underline">
+          <path
+            d="M82 2.568c.036 1.699-3.547.36-4.332.308-1.457-.1-18.759.065-22.197.054-1.466-.005-15.946-.361-16.682-.378-1.378-.03-7.148-.193-8.656-.17-1.2.017-14.44.345-16.02.404-1.2.044-9.782-.2-10.583-.247C2.663 2.487.014 3.376 0 1.501-.017-.67 2.378.23 3.49.203c1.172-.027 8.753.205 9.655.173.635-.022 17.965-.4 19.035-.377 1.623.035 12.802.269 14.052.29C47.495.313 61.47.532 62.776.54 64.51.551 70.418.274 71.64.286c1.591.015 7.335.628 8.6.422.86-.14 1.771.226 1.76 1.86z"
+            fill="currentColor"></path>
+        </svg>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="registration__reg-img">
+
+  </div>
+</div>
+
+<div class="category-cards-container">
+
+  <div class="category-cards-container__cards">
+
+    <div class="category-cards-container__cards__kids" [ngClass]="{'main-category-card': mainCard=='kids'}"></div>
+
+    <div class="category-cards-container__cards__women" [ngClass]="{'main-category-card': mainCard=='women'}"></div>
+
+    <div class="category-cards-container__cards__men" [ngClass]="{'main-category-card': mainCard=='men'}"></div>
+
+  </div>
+
+  <div class="category-cards-container__categories">
+    <span  class="category-cards-container__categories__category"  (mouseover)="cardPosition('men')" [ngClass]="{'main-category-card': mainCard=='men'}">MEN</span>
+    <span class="category-cards-container__categories__category" (mouseover)="cardPosition('women')" [ngClass]="{'main-category-card': mainCard=='women'}">WOMEN</span>
+    <span class="category-cards-container__categories__category" (mouseover)="cardPosition('kids')" [ngClass]="{'main-category-card': mainCard=='kids'}">KIDS</span>
   </div>
 
 </div>

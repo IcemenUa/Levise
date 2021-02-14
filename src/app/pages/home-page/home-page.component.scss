@@ -1,63 +1,151 @@
-.special-offer {
-  width: 100%;
+.registration {
+  margin-top: 5%;
+  // background-color: black;
   height: 85vh;
-  background-image: url(/assets/Images/home-page/specialOffer.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.registration__reg-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 30%;
+  height: 50%;
 }
 
-.special-offer__offer-name {
-  color: rgb(255, 219, 0);
-  font-family: 'Helvetica Now Text';
-  text-align: center;
-  margin: 0;
-  letter-spacing: .02em;
+// .registration__reg-info__logo {
+
+// }
+
+.registration__reg-info__name {
+  font-family: 'helvetica';
+  font-weight: 800;
+  text-align: left;
+  font-size: calc(24px + 8*(100vw - 768px)/672);
+  ;
+  line-height: calc(24px + 8*(100vw - 768px)/672);
+}
+
+.registration__reg-img {
+  background-image: url(./../../../assets/Images/home-page/H1_21_REDTAB_BENEFIT_TILE_EVERGREEN.jpeg);
+  width: 50%;
+  height: 100%;
+  background-size: cover;
 
 }
 
-.special-offer__offer-name__top {
-  font-size: 14px;
-  font-weight: 700;
+.registration__reg-info__desc {
+  margin-top: 4%;
+  font-family: 'helvetica';
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 24px;
+
 }
 
-.special-offer__offer-name__bot {
-  font-family: 'Interstate';
-  font-size: 65px;
-  font-weight: 700;
-  margin: 2vh 0vh;
-}
-
-.special-offer__offer-name__offer-desk {
-  color: white;
-  font-size: 16px;
-}
-
-.special-offer__buttons {
+.registration__reg-info__btns {
   display: flex;
-  justify-content: space-around;
-  text-align: center;
-  color: white;
-
+  margin-top: 4%;
+  text-align: left;
+  font-family: 'helvetica';
+  font-weight: 700;
 }
 
-.special-offer__button {
-  border: 1px solid white;
-  height: 50px;
-  width: 200px;
-  line-height: 50px;
-  margin: 5%;
-  border-radius: 2px;
-  font-size: 16px;
-  font-weight: 500;
+.registration__reg-info__btns__btn {
+  margin-right: 5%;
+  display: block;
   cursor: pointer;
 }
 
-.special-offer__button:hover {
-  background-color: white;
-  color: #000;
+
+.registration__reg-info__btns__btn__underline {
+  display: block;
+  color: red;
+  margin: 0;
+}
+
+.registration__reg-info__btns__btn__name {
+  display: block;
+  margin-bottom: 10%;
+}
+
+.registration__reg-info__btns__btn__name:hover {
+  margin-bottom: 0;
+  transition: 0.4s;
+}
+
+.registration__reg-info__btns__btn__name:not(:hover) {
+  margin-bottom: 10%;
+  transition: 0.4s;
+}
+
+.category-cards-container {
+  width: 100%;
+  height: 90vh;
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.category-cards-container__cards {
+  height: 100%;
+  width: 50%;
+  margin-right: 5%;
+  position: relative;
+}
+
+.category-cards-container__cards__kids {
+  position: absolute;
+  height: 70%;
+  width: 60%;
+  right: 5%;
+  top: 5%;
+  background-image: url(./../../../assets/Images/home-page/kids.jpeg);
+  background-size: cover;
+  z-index: 0;
+}
+
+.category-cards-container__cards__women {
+  position: absolute;
+  height: 70%;
+  width: 60%;
+  right: 12%;
+  top: 12%;
+  background-image: url(./../../../assets/Images/home-page/women.jpeg);
+  background-size: cover;
+  z-index: 1;
+}
+
+.category-cards-container__cards__men {
+  position: absolute;
+  height: 70%;
+  width: 60%;
+  right: 19%;
+  top: 19%;
+  background-image: url(./../../../assets/Images/home-page/men.jpeg);
+  background-size: cover;
+  z-index: 2;
+}
+
+.category-cards-container__categories {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 32px;
+  font-family: 'helvetica';
+  color: gray;
+}
+
+.main-category-card {
+  z-index: 4;
+  color: black;
 }

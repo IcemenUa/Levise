@@ -15,6 +15,10 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
+import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home-offer-cards.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { EmbedVideo } from 'ngx-embed-video';
 
 
 
@@ -29,6 +33,9 @@ import { environment } from '../environments/environment';
     HomeSpecialOfferComponent,
     AdminComponent,
     AdminHomePageComponent,
+    HomeOfferCardsComponent,
+    
+    
   
   ],
   imports: [
@@ -38,6 +45,8 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment),
     AngularFireStorageModule,
     AngularFirestoreModule,
+    HttpClientModule,
+    EmbedVideo.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

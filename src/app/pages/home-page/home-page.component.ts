@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  men: boolean = true;
-  women: boolean = false;
-  kids: boolean = false;
   mainCard: string = 'men';
   constructor() { }
 

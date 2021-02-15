@@ -20,7 +20,7 @@ import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home
 import { HttpClientModule } from '@angular/common/http';
 import { EmbedVideo } from 'ngx-embed-video';
 
-
+import {SidenavModule} from 'angular-ng-sidenav'
 
 
 
@@ -34,6 +34,7 @@ import { EmbedVideo } from 'ngx-embed-video';
     AdminComponent,
     AdminHomePageComponent,
     HomeOfferCardsComponent,
+
     
     
   
@@ -46,7 +47,8 @@ import { EmbedVideo } from 'ngx-embed-video';
     AngularFireStorageModule,
     AngularFirestoreModule,
     HttpClientModule,
-    EmbedVideo.forRoot()
+    EmbedVideo.forRoot(),
+    SidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

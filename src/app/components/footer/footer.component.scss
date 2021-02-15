@@ -1,0 +1,33 @@
+footer{
+  margin-top: 10%;
+}
+.footer-categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+  font-family: 'helvetica';
+}
+
+ol {
+  list-style: none;
+  color: grey;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+li {
+  margin: 2% 0 2% 0;
+  cursor: pointer;
+}
+
+li:hover {
+  color: black;
+  text-decoration: underline 2px solid black;
+}
+
+.footer-categories__category-name {
+  color: black;
+  font-weight: 700;
+}

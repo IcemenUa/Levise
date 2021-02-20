@@ -151,3 +151,37 @@
   z-index: 4;
   color: black;
 }
+
+@media screen and (max-width:320px){
+  .registration{
+    margin-top: 0;
+    height: 40vh;
+  }
+  .registration__reg-info{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .registration__reg-img{
+    display: none;
+  }
+  .registration__reg-info__btns{
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+  }
+  .registration__reg-info__btns__btn{
+    width: 40%;
+  }
+  .category-cards-container{
+    height: 40vh;
+  }
+  .category-cards-container__categories{
+    font-size: 15px;
+    width: 30%;
+  }
+  .category-cards-container__cards{
+    width: 60%;
+  }
+}

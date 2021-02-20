@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  mainCard: string = 'men';
+  mainCard = 'men';
   constructor() { }
 
   ngOnInit(): void {

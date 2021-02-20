@@ -1,5 +1,12 @@
-header{
-    position: sticky;
-    display: block;
-    background-color: white;
+.header {
+  position:fixed;
+  top: 0px;
+  background-color: white;
+  z-index: 10;
+  width: 100%;
+}
+@media screen and (max-width:320px){
+  .footer{
+    display: none;
+  }
 }

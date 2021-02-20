@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isExpanded: boolean;
+  leftMenuCategoryOpen: boolean;
+  rightMenuCategoryOpen: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggleSidenav() {
-    this.isExpanded = !this.isExpanded;
+  leftMenuCategoryToggle(): void {
+    this.leftMenuCategoryOpen = !this.leftMenuCategoryOpen
   }
+  rightMenuCategoryToggle(): void {
+    this.rightMenuCategoryOpen = !this.rightMenuCategoryOpen
+  }
+
 }
 
 

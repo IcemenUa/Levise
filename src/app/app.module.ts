@@ -8,8 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeSpecialOfferComponent } from './pages/home-page/home-special-offer/home-special-offer.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomePageComponent } from './admin/admin-home-page/admin-home-page.component';
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
+import { AdminSubCategoriesComponent } from './admin/admin-sub-categories/admin-sub-categories.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,7 +23,12 @@ import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home
 import { HttpClientModule } from '@angular/common/http';
 import { EmbedVideo } from 'ngx-embed-video';
 
-import {SidenavModule} from 'angular-ng-sidenav'
+
+
+
+
+
+
 
 
 
@@ -34,6 +42,8 @@ import {SidenavModule} from 'angular-ng-sidenav'
     AdminComponent,
     AdminHomePageComponent,
     HomeOfferCardsComponent,
+    AdminCategoriesComponent,
+    AdminSubCategoriesComponent,
 
     
     
@@ -48,7 +58,6 @@ import {SidenavModule} from 'angular-ng-sidenav'
     AngularFirestoreModule,
     HttpClientModule,
     EmbedVideo.forRoot(),
-    SidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

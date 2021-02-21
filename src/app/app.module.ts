@@ -17,6 +17,9 @@ import { AdminSubCategoriesComponent } from './admin/admin-sub-categories/admin-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
 import { environment } from '../environments/environment';
 import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home-offer-cards.component';
 
@@ -53,9 +56,10 @@ import { EmbedVideo } from 'ngx-embed-video';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
     HttpClientModule,
     EmbedVideo.forRoot(),
   ],

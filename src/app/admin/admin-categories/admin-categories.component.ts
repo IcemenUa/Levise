@@ -11,11 +11,9 @@ import { Category } from '../../shared/models/category.model';
 export class AdminCategoriesComponent implements OnInit {
 
   categoriesArr: Array<ICategory>
-  catName = 'firstCat';
-  catID = '123';
-  newCatName = 'sadsdaCat';
-  newCatID = '321';
-
+  catName: string;
+  catID: string;
+  changeStatus: boolean
   constructor(private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
@@ -33,27 +31,43 @@ export class AdminCategoriesComponent implements OnInit {
         });
       }
     );
-    console.log(this.categoriesArr);
 
   }
 
-  private addCategory(): void {
+  addCategory(): void {
 
-    const newCategory = new Category(this.catID, this.catName);
+    const newCategory = new Category(this.catID, this.catName.toUpperCase());
     delete newCategory.id;
     this.categoryService.addCategoryToFB({ ...newCategory }).then(() => this.getCategories)
+    this.clearInputs()
   }
 
   private deleteCategory(categoryID): void {
     this.categoryService.deleteCategoryOnFB(categoryID).then(() => this.getCategories)
 
   }
-  private updateCategory(id: string): void {
 
-    const updatedCategory = new Category(id, this.newCatName);
+  private getCategoryData(id: string, name: string): void {
+    this.changeStatus = !this.changeStatus
+    this.catID = id
+    this.catName = name
+  }
 
-    this.categoryService.updateCategoryOnFB({ ...updatedCategory }).then(() => this.getCategories)
 
+  private updateCategory(id: string, name: string): void {
+
+
+    const updatedCategory = new Category(id, this.catName.toUpperCase());
+
+    this.categoryService.updateCategoryOnFB({ ...updatedCategory }).then(() => this.getCategories);
+
+    this.changeStatus = false;
+    this.clearInputs()
+
+  }
+  private clearInputs(): void {
+    this.catName = ''
+    this.catID = ''
   }
 
 }

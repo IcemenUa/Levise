@@ -1,1 +1,43 @@
-<p>admin-sub-categories works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">SubCategory</th>
+      <th scope="col">Category</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of subCategoriesArr">
+      <th scope="row">{{category.id}}</th>
+      <td>{{category.name}}</td>
+      <td>{{category.category}}</td>
+      <td><button class="btn btn-danger" (click)="deleteSubCategory(category.id)">Delete</button></td>
+      <td><button class="btn btn-warning" (click)="getSubCategoryData(category.id,category.name)">Edit</button></td>
+    </tr>
+
+  </tbody>
+</table>
+<div class="container-fluid">
+
+  <select class="form-select mb-3" aria-label="Default select example"  [(ngModel)]="category">
+    
+    <option *ngFor="let item of categoriesArr" [value]="item.name">{{item.name}}</option>
+  
+  </select>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="CATEGORY NAME" [(ngModel)]="subCatName">
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="CATEGORY ID" [(ngModel)]="subCatID">
+  </div>
+
+
+
+  <button class="btn btn-success" (click)="addSubCategory()" *ngIf="!changeStatus">add</button>
+  <button class="btn btn-success" (click)="updateSubCategory(subCatID,subCatName)" *ngIf="changeStatus">save</button>
+
+</div>

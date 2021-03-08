@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,10 +12,13 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeSpecialOfferComponent } from './pages/home-page/home-special-offer/home-special-offer.component';
 
+
+
 import { AdminComponent } from './admin/admin.component';
 import { AdminHomePageComponent } from './admin/admin-home-page/admin-home-page.component';
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AdminSubCategoriesComponent } from './admin/admin-sub-categories/admin-sub-categories.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -25,6 +31,7 @@ import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home
 
 import { HttpClientModule } from '@angular/common/http';
 import { EmbedVideo } from 'ngx-embed-video';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -47,10 +54,11 @@ import { EmbedVideo } from 'ngx-embed-video';
     HomeOfferCardsComponent,
     AdminCategoriesComponent,
     AdminSubCategoriesComponent,
+    AdminProductsComponent,
 
-    
-    
-  
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -62,6 +70,9 @@ import { EmbedVideo } from 'ngx-embed-video';
     AngularFireAuthModule,
     HttpClientModule,
     EmbedVideo.forRoot(),
+    FormsModule,
+    NgForm,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -56,12 +56,15 @@
 
     <ul class="left-menu__categorises">
       <li class="left-menu__categorises__category" *ngFor="let category of categoriesArr"
-        (click)="subCategoriesMenuToggle()">{{category.name}}</li>
+        (click)="openSubCategoriesMenu(category.name)">{{category.name}}</li>
     </ul>
   </div>
 
   <div class="left-menu__sub-categories" [ngClass]="{'left-menu__sub-categories__open': subCategoriesMenuOpen}">
-
+    <ul class="left-menu__categorises">
+      <li class="left-menu__categorises__category" *ngFor="let category of subCategoriesArr"
+        (click)="subCategoriesMenuToggle()" (click)="getSubCategories(category.name)">{{category.name}}</li>
+    </ul>
   </div>
 
 </div>

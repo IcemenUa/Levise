@@ -1,139 +1,195 @@
 <div class="container-fluid mb-3">
 
-  <label for="category" class="form-label">Select Category</label>
+  <form action="" [formGroup]="productForm">
 
-  <select class="form-select mb-3" id="category" aria-label="Default select example" [(ngModel)]="category">
-    <option *ngFor="let category of categoriesArr" [value]="category.name">{{category.name}}
-    </option>
-  </select>
+    <!-- Category -->
+    <div class="form-group">
 
-  <label for="subCategory" class="form-label">Select Sub Category</label>
-  <select class="form-select mb-3" aria-label="Default select example" id="subCategory" [(ngModel)]="subCategory">
+      <label for="category" class="form-label">Select Category</label>
 
-    <option *ngFor="let subCategory of subCategoriesArr" [value]="subCategory.name">{{subCategory.name}}</option>
+      <select class="form-select mb-3" id="category" aria-label="Default select example"
+        formControlName="productCategory" name="productCategory">
 
-  </select>
+        <option *ngFor="let category of categoriesArr" [value]="category.name">{{category.name}}
+        </option>
 
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="PRODUCT ID" [(ngModel)]="productID">
-  </div>
+      </select>
+    </div>
 
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="PRODUCT NAME" [(ngModel)]="productName">
+    <!-- Sub Category -->
+    <div class="form-group">
 
-  </div>
+      <label for="subCategory" class="form-label">Select Sub Category</label>
 
-  <div class="d-flex justify-content-evenly mb-3">
+      <select class="form-select mb-3" aria-label="Default select example" formControlName="productSubCategory"
+        name="productSubCategory" id="subCategory">
 
-    <div class=" d-flex flex-column">
-      <label for="mainImg" class="form-label">Select Main Image</label>
-      <input type="file" class="form-control disable" id="mainImg" (change)="uploadImage($event)"
-        [disabled]="imagesUrl.length>0">
+        <option *ngFor="let subCategory of subCategoriesArr" [value]="subCategory.name">{{subCategory.name}}</option>
+
+      </select>
+
+    </div>
+
+    <!-- Product ID -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="PRODUCT ID" formControlName="productID" name="productID"
+        id="productID">
+    </div>
+    <!-- Product Name -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="PRODUCT NAME" formControlName="productName"
+        name="productName" id="productName">
+    </div>
+    <!-- Product Price -->
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Price" formControlName="productPrice">
+    </div>
+
+    <!-- Product Images -->
+    <div class="d-flex justify-content-evenly mb-3">
+
+      <div class=" d-flex flex-column">
+        <label for="mainImg" class="form-label">Select Main Image</label>
+        <input type="file" class="form-control disable" id="mainImg" (change)="uploadImage($event)"
+          [disabled]="productForm.controls['productImages']['controls'].length>0">
+      </div>
+
+
+      <div class=" d-flex flex-column">
+        <label for="img_1" class="form-label">Select Image 1</label>
+        <input type="file" class="form-control " id="img_1" (change)="uploadImage($event)"
+          [disabled]="productForm.controls['productImages']['controls'].length != 1">
+      </div>
+
+
+      <div class=" d-flex flex-column">
+        <label for="img_2" class="form-label">Select Image 2</label>
+        <input type="file" class="form-control " id="img_2" (change)="uploadImage($event)"
+          [disabled]="productForm.controls['productImages']['controls'].length != 2">
+      </div>
+
+    </div>
+
+  </form>
+
+  <!-- Product Sizes -->
+  <form [formGroup]="SizesForm">
+
+    <div class="mb-3">
+
+      <P>Available Sizes:</P>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="xsSizeAvailable" name="xsSizeAvailable" value="XS"
+          formControlName="XS">
+        <label class="form-check-label" for="xsSizeAvailable">XS</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="sSizeAvailable" name="sSizeAvailable" formControlName="S">
+        <label class="form-check-label" for="sSizeAvailable">S</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="mSizeAvailable" name="mSizeAvailable" formControlName="M">
+        <label class="form-check-label" for="mSizeAvailable">M</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="lSizeAvailable" name="lSizeAvailable" formControlName="L">
+        <label class="form-check-label" for="lSizeAvailable">L</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="xlSizeAvailable" name="xlSizeAvailable"
+          formControlName="XL">
+        <label class="form-check-label" for="xlSizeAvailable">XL</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="xxlSizeAvailable" name="xxlSizeAvailable"
+          formControlName="XXL">
+        <label class="form-check-label" for="xxlSizeAvailable">XXL</label>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- Description -->
+  <form [formGroup]="AboutProductForm">
+    <p>Description:</p>
+
+    <!-- Technologies -->
+    <div class="input-group mb-3">
+      <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="description"
+        formControlName="description" name="description"></textarea>
+    </div>
+
+    <!-- How It Fits -->
+
+    <P>How It Fits:</P>
+
+
+    <div formArrayName="howItFits">
+      <div class="input-group mb-3"
+        *ngFor="let howItFitsForm of AboutProductForm.controls['howItFits']['controls']; let i = index">
+        <input type="text" class="form-control" placeholder="How It Fits" formControlName="{{i}}" name="howItFits">
+      </div>
+      <button class="btn  btn-success mb-3" type="button" id="HowItFits" (click)="addTesis('howItFits')">Add</button>
+
     </div>
 
 
-    <div class=" d-flex flex-column">
-      <label for="img_1" class="form-label">Select Image 1</label>
-      <input type="file" class="form-control " id="img_1" (change)="uploadImage($event)"
-        [disabled]="imagesUrl.length != 1">
+    <!-- Composition And Care -->
+
+    <P>Composition And Care:</P>
+    <div formArrayName="compositionAndCare">
+      <div class="input-group mb-3"
+        *ngFor="let compositionAndCareForm of AboutProductForm.controls['compositionAndCare']['controls']; let i = index">
+        <input type="text" class="form-control" placeholder="Composition And Care" formControlName="{{i}}"
+          name="compositionAndCare">
+
+
+      </div>
+      <button class="btn  btn-success mb-3" type="button" id="CompositionAndCare"
+        (click)="addTesis('compositionAndCare')">Add</button>
     </div>
 
 
-    <div class=" d-flex flex-column">
-      <label for="img_2" class="form-label">Select Image 2</label>
-      <input type="file" class="form-control " id="img_2" (change)="uploadImage($event)" [disabled]="imagesUrl.length != 2">
-    </div>
-
-  </div>
-  <div class="mb-3">
-    <P>Available Sizes:</P>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="xsSizeAvailable" name="xsSizeAvailable" [(ngModel)]="xsSizeAvailable">
-      <label class="form-check-label" for="xsSizeAvailable">XS</label>
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="sSizeAvailable" name="sSizeAvailable" [(ngModel)]="sSizeAvailable">
-      <label class="form-check-label" for="sSizeAvailable">S</label>
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="mSizeAvailable" name="mSizeAvailable" [(ngModel)]="mSizeAvailable">
-      <label class="form-check-label" for="mSizeAvailable">M</label>
-    </div>
-
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="lSizeAvailable" name="lSizeAvailable" [(ngModel)]="lSizeAvailable">
-      <label class="form-check-label" for="lSizeAvailable">L</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="xlSizeAvailable" name="xlSizeAvailable" [(ngModel)]="xlSizeAvailable">
-      <label class="form-check-label" for="xlSizeAvailable">XL</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="xxlSizeAvailable" name="xxlSizeAvailable" [(ngModel)]="xxlSizeAvailable">
-      <label class="form-check-label" for="xxlSizeAvailable">XXL</label>
-    </div>
-
-  </div>
-
-  <p>Description:</p>
-
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Technologies" aria-label="Technologies"
-      aria-describedby="Technologies" [(ngModel)]="technologiesTesis" name="technologiesTesis">
-    <button class="btn  btn-success" type="button" id="Technologies" (click)="addTechnologiesTesis()">Add</button>
-  </div>
 
 
+  </form>
+  <hr>
 
+  <button class="btn btn-success" *ngIf="!changeStatus" (click)="addProduct()">add product</button>
+  <button class="btn btn-success" (click)="updateProduct()" *ngIf="changeStatus">save</button>
 
-
-
-
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="How It Fits" aria-label="HowItFits"
-      aria-describedby="HowItFits" [(ngModel)]="howItFitsTesis" name="howItFitsTesis">
-    <button class="btn  btn-success" type="button" id="HowItFits" (click)="addHowItFitsTesis()">Add</button>
-  </div>
-
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Composition And Care" aria-label="CompositionAndCare"
-      aria-describedby="CompositionAndCare" [(ngModel)]="compositionAndCareTesis" name="compositionAndCareTesis">
-    <button class="btn  btn-success" type="button" id="CompositionAndCare" (click)="addCompositionAndCareTesis()">Add</button>
-  </div>
-  <p>PRICE</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Price" [(ngModel)]="productPrice">
-  </div>
-
-
-
-  <button class="btn btn-success" *ngIf="!changeStatus" (click)="addProduct()">add</button>
-  <button class="btn btn-success" (click)="updateSubCategory(subCatID,subCatName)" *ngIf="changeStatus">save</button>
 
 </div>
+
+
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Product</th>
       <th scope="col">Category</th>
       <th scope="col">SubCategory</th>
-      <th scope="col">Product</th>
-      <th scope="col">Image</th>
+      <th scope="col">Images</th>
       <th scope="col">Delete</th>
       <th scope="col">Edit</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of productArr">
-      <th scope="row">{{product.category}}</th>
-      <td>{{product.subCategory}}</td>
-      <td>{{product.name}}</td>
-      <td><img [src]="product.imgUrl"></td>
-      <td><button class="btn btn-danger" (click)="deleteSubCategory(category.id)">Delete</button></td>
-      <td><button class="btn btn-warning" (click)="getSubCategoryData(category.id,category.name)">Edit</button></td>
+      <th scope="row">{{product.productName}}</th>
+      <td>{{product.productCategory}}</td>
+      <td>{{product.productSubCategory}}</td>
+      <td>
+        <div class="d-flex justify-content-evenly">
+          <img class=" img-preview" [src]="product.productImages[i]"
+            *ngFor="let foto of product.productImages let i=index">
+        </div>
+      </td>
+      <td><button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button></td>
+      <td><button class="btn btn-warning" (click)="getProductData(product.id,product)">Edit</button></td>
     </tr>
 
   </tbody>

@@ -19,6 +19,11 @@ export class ProductsService {
     return this.firestore.collection('products').snapshotChanges();
 
   }
+  getProductFromFB(id: string): any {
+
+    return this.firestore.collection('products').doc(id).snapshotChanges();
+
+  }
 
   addProductToFB(product: IProduct): Promise<DocumentReference<unknown>> {
 
@@ -30,9 +35,9 @@ export class ProductsService {
     return this.firestore.collection('products').doc(id).delete();
   }
 
-  updateProductOnFB(category: ICategory): Promise<void> {
+  updateProductOnFB(product): Promise<void> {
 
-    return this.firestore.collection('products').doc(category.id).update(category);
+    return this.firestore.collection('products').doc(product.productID).update(product);
 
   }
 }

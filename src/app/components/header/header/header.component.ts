@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { ICategory } from '../../../shared/interfaces/category.interface';
+import { ISubCategory } from '../../../shared/interfaces/subCategory.interface';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
@@ -14,8 +17,8 @@ export class HeaderComponent implements OnInit {
   leftMenuOpen: boolean;
   subCategoriesMenuOpen: boolean;
   categoriesArr: Array<ICategory>;
-
-  constructor(private categoryService: CategoriesService) { }
+  subCategoriesArr: Array<ISubCategory> = [];
+  constructor(private categoryService: CategoriesService, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getCategories()
@@ -34,6 +37,24 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  getSubCategories(categoryName: string): void {
+    this.subCategoriesArr = [];
+    this.firestore.collection('subCategories').ref.where('category', '==', categoryName).onSnapshot(
+      snap => {
+        snap.forEach(prodData => {
+          const data = prodData.data() as ISubCategory;
+          const id = prodData.id;
+          this.subCategoriesArr.push({ id, ...data });
+        });
+      }
+    );
+
+  }
+
+  openSubCategoriesMenu(categoryName: string): void {
+    this.subCategoriesMenuOpen = true;
+    this.getSubCategories(categoryName)
+  }
 
   leftMenuToggle(): void {
 
@@ -46,7 +67,7 @@ export class HeaderComponent implements OnInit {
     this.subCategoriesMenuOpen = !this.subCategoriesMenuOpen
   }
 
-  closeAllMenus():void{
+  closeAllMenus(): void {
     this.leftMenuOpen = false;
     this.subCategoriesMenuOpen = false;
   }

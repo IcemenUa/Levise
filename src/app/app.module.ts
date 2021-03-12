@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgForm } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,10 +56,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AdminCategoriesComponent,
     AdminSubCategoriesComponent,
     AdminProductsComponent,
-
-
-
-
+    
+    
+    
+  
   ],
   imports: [
     BrowserModule,
@@ -71,7 +72,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     HttpClientModule,
     EmbedVideo.forRoot(),
     FormsModule,
-    NgForm,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot()
   ],
   providers: [],

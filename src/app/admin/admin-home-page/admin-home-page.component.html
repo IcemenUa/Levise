@@ -1,1 +1,10 @@
 <p>admin-home-page works!</p>
+
+
+
+<form action="" [formGroup]="myForm">
+
+  <label>Имя</label>
+  <input class="form-control" name="name" formControlName="userName" />
+  <button class="btn btn-danger" (click)="log()"></button>
+</form>

@@ -1,0 +1,21 @@
+<div class="card-container">
+
+
+
+  <div class="card-container__card" *ngFor="let product of productsArr" (click)="logID(product.id)"
+    [routerLink]="[ '/productDetails/',product.productCategory,product.productSubCategory,product.id ]">
+
+    <div class="card-container__card__image " alt="first slide "
+      style="background-image: url({{product.productImages[0]}});"></div>
+
+    <p class="card-container__card__card-name">{{product.productName}}</p>
+    <p class="card-container__card__card-price">{{product.productPrice}}</p>
+
+  </div>
+
+</div>
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">

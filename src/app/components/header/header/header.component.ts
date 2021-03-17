@@ -52,8 +52,8 @@ export class HeaderComponent implements OnInit {
   }
 
   openSubCategoriesMenu(categoryName: string): void {
-    this.subCategoriesMenuOpen = true;
     this.getSubCategories(categoryName)
+    this.subCategoriesMenuOpen = true;
   }
 
   leftMenuToggle(): void {

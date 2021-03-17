@@ -6,12 +6,14 @@ import { SubCategoriesService } from 'src/app/shared/services/sub-categories.ser
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { ProductsService } from '../../shared/services/products.service';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Product } from 'src/app/shared/models/product.model';
-import { ProductDescription } from '../../shared/models/productDescription.model';
-import { ProductSize } from '../../shared/models/productSize.model';
-import { IProductSize } from 'src/app/shared/interfaces/productSize.interface';
-import { IProductDescription } from '../../shared/interfaces/productDescription.interface';
+// import { Product } from 'src/app/shared/models/product.model';
+// import { ProductDescription } from '../../shared/models/productDescription.model';
+// import { ProductSize } from '../../shared/models/productSize.model';
+// import { IProductSize } from 'src/app/shared/interfaces/productSize.interface';
+// import { IProductDescription } from '../../shared/interfaces/productDescription.interface';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
+// import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
@@ -75,10 +77,14 @@ export class AdminProductsComponent implements OnInit {
 
   // newProduct: IProduct
 
-  constructor(private formBuilder: FormBuilder, private productsService: ProductsService, private subCategoryService: SubCategoriesService, private categoryService: CategoriesService, private AngularFireStorage: AngularFireStorage) { }
+  constructor(private firestore: AngularFirestore, private formBuilder: FormBuilder, private productsService: ProductsService, private subCategoryService: SubCategoriesService, private categoryService: CategoriesService, private AngularFireStorage: AngularFireStorage) { }
 
   ngOnInit(): void {
-    this.getCategories(), this.getSubCategories(), this.getProducts()
+    this.getCategories();
+    this.getProducts();
+    this.productForm.get('productCategory').valueChanges.subscribe((category) => {
+      this.getSubCategories(category)
+    })
   }
 
 
@@ -95,17 +101,40 @@ export class AdminProductsComponent implements OnInit {
   }
 
 
-  private getSubCategories(): void {
-    this.subCategoryService.getSubCategoriesFromFB().subscribe(
-      collection => {
-        this.subCategoriesArr = collection.map(category => {
-          const data = category.payload.doc.data() as ISubCategory;
-          const id = category.payload.doc.id;
-          return { id, ...data };
+  // private getSubCategories(): void {
+  //   this.subCategoryService.getSubCategoriesFromFB().subscribe(
+  //     collection => {
+  //       this.subCategoriesArr = collection.map(category => {
+  //         const data = category.payload.doc.data() as ISubCategory;
+  //         const id = category.payload.doc.id;
+  //         return { id, ...data };
+  //       });
+  //     }
+  //   );
+  // }
+
+  // 
+
+  getSubCategories(category): void {
+    // const category = this.productForm.value.productCategory
+    this.subCategoriesArr = [];
+    this.firestore.collection('subCategories').ref.where('category', '==', category).onSnapshot(
+      snap => {
+        snap.forEach(prodData => {
+          const data = prodData.data() as any;
+          const id = prodData.id;
+          this.subCategoriesArr.push({ id, ...data });
+          console.log(this.subCategoriesArr);
+          
         });
       }
-    );
+    )
+
   }
+
+
+
+
   private getProducts(): void {
     this.productsService.getProductsFromFB().subscribe(
       collection => {
@@ -167,14 +196,9 @@ export class AdminProductsComponent implements OnInit {
       ...this.AboutProductForm.value,
     }
 
+    this.productsService.addProductToFB({ ...product }).then(() => this.getCategories);
 
-    this.productsService.addProductToFB({ ...product }).then(() => this.getCategories)
-
-
-
-    console.log(product);
-    this.clearForms()
-
+    this.clearForms();
   }
 
   private deleteProduct(productID): void {
@@ -214,7 +238,6 @@ export class AdminProductsComponent implements OnInit {
     })
     for (let i = 0; i < product.howItFits.length; i++) {
       (<FormArray>this.AboutProductForm.controls["howItFits"]).push(new FormControl(product.howItFits[i], Validators.required));
-
 
     }
     for (let i = 0; i < product.compositionAndCare.length; i++) {

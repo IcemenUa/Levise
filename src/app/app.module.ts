@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeSpecialOfferComponent } from './pages/home-page/home-special-offer/home-special-offer.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 
 
@@ -33,6 +35,7 @@ import { HomeOfferCardsComponent } from './pages/home-page/home-offer-cards/home
 import { HttpClientModule } from '@angular/common/http';
 import { EmbedVideo } from 'ngx-embed-video';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
@@ -56,6 +59,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AdminCategoriesComponent,
     AdminSubCategoriesComponent,
     AdminProductsComponent,
+    ShopComponent,
+    ProductDetailComponent,
     
     
     
@@ -73,7 +78,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     EmbedVideo.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

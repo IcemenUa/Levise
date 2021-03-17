@@ -189,6 +189,8 @@ body {
   cursor: pointer;
 }
 
+
+
 .left-menu__categorises__category:after {
   background-color: #000000;
   display: block;
@@ -204,6 +206,31 @@ body {
 
 }
 
+.left-menu__sub-categories__sub-category{
+
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 10px;
+  font-family: 'helvetica';
+  font-weight: 700;
+  display: block;
+  cursor: pointer;
+}
+
+.left-menu__sub-categories__sub-category:after {
+  background-color: #000000;
+  display: block;
+  content: "";
+  height: 2px;
+  width: 0%;
+  transition: width .7s ease-in-out;
+}
+
+.left-menu__sub-categories__sub-category:hover:after,
+.left-menu__sub-categories__sub-category:focus:after {
+  width: 100%;
+
+}
 
 
 .left-menu__sub-categories {

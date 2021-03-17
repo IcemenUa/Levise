@@ -4,6 +4,7 @@ import { SubCategoriesService } from '../../shared/services/sub-categories.servi
 import { ISubCategory } from 'src/app/shared/interfaces/subCategory.interface';
 import { SubCategory } from 'src/app/shared/models/subCategory.model';
 import { ICategory } from 'src/app/shared/interfaces/category.interface';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-admin-sub-categories',
@@ -16,13 +17,13 @@ export class AdminSubCategoriesComponent implements OnInit {
   subCategoriesArr: Array<ISubCategory>
   subCatName: string;
   subCatID: string;
-  category:string;
+  category: string;
   changeStatus: boolean;
 
-  constructor(private subCategoryService: SubCategoriesService, private categoryService: CategoriesService) { }
+  constructor(private firestore: AngularFirestore, private subCategoryService: SubCategoriesService, private categoryService: CategoriesService) { }
 
   ngOnInit(): void {
-    this.getSubCategories(),this.getCategories()
+    this.getSubCategories(), this.getCategories()
   }
 
 
@@ -50,6 +51,9 @@ export class AdminSubCategoriesComponent implements OnInit {
       }
     );
   }
+
+
+
 
   addSubCategory(): void {
 

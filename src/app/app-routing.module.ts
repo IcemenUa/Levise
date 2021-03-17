@@ -8,17 +8,24 @@ import { AdminHomePageComponent } from './admin/admin-home-page/admin-home-page.
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AdminSubCategoriesComponent } from './admin/admin-sub-categories/admin-sub-categories.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 
 const routes: Routes = [
-  {path:'',pathMatch:'full',redirectTo:'home'},
-  {path:'home', component:HomePageComponent},
-  {path:'admin', component:AdminComponent, children:[
-    {path:'adminHome', component:AdminHomePageComponent},
-    {path:'adminCategories', component:AdminCategoriesComponent},
-    {path:'adminSubCategories', component:AdminSubCategoriesComponent},
-    {path:'AdminProducts', component:AdminProductsComponent},
-  ]},
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', component: HomePageComponent },
+  { path: 'shop/:category/:subCategory', component: ShopComponent,},
+  { path: 'productDetails/:productCategory/:productSubCategory/:prodID', component: ProductDetailComponent },
+
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: 'adminHome', component: AdminHomePageComponent },
+      { path: 'adminCategories', component: AdminCategoriesComponent },
+      { path: 'adminSubCategories', component: AdminSubCategoriesComponent },
+      { path: 'AdminProducts', component: AdminProductsComponent },
+    ]
+  },
 ];
 
 @NgModule({
